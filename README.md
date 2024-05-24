@@ -157,7 +157,7 @@ After running the jobs, you should find the following output files in the output
 
 - trip_count.csv: Number of trips per day.
 
-### Analysis of Average Trip Distance and Tip Percentage
+### Analysis 
 #### Average Duration and Distance of Rides
 Average Trip Distance by Time of Day, Day of Week, and Month of Year
 
