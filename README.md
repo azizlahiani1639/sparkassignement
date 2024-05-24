@@ -209,7 +209,6 @@ The average fare amount shows a fairly consistent pattern across different month
 
 #### Demand Prediction
 Feature Engineering:
-
 We used the date and time of the pickups to create features for the model, such as the hour of the day, day of the week, and month of the year.
 
 Regression Model:
@@ -218,4 +217,4 @@ A linear regression model was used to predict the number of pickups in the next 
 Results:
 The model's performance was visualized by plotting the predicted number of pickups over time.
 
-![Predicted Number of Pickups Over Time](path/to/image.png)
+![Predicted Number of Pickups Over Time](Prediction.png)
