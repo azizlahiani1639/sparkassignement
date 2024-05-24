@@ -217,4 +217,4 @@ A linear regression model was used to predict the number of pickups in the next 
 Results:
 The model's performance was visualized by plotting the predicted number of pickups over time.
 
-![Predicted Number of Pickups Over Time](Prediction.png)
+![Predicted Number of Pickups Over Time](Prediction.PNG)
