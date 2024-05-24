@@ -3,13 +3,14 @@
 This repository contains the code and data for analyzing NYC taxi trip data using Apache Spark on Google Cloud Platform (GCP).
 
 ## Table of Contents
-1. [Setup Instructions](#setup-instructions)
-2. [Project Structure](#project-structure)
-3. [Data](#data)
-4. [Running the Analysis Jobs](#running-the-analysis-jobs)
-5. [Expected Output](#expected-output)
-6. [Results](#results)
-7. [License](#license)
+- [Setup Instructions](#setup-instructions)
+- [Project Structure](#project-structure)
+- [Data](#data)
+- [Running the Analysis Jobs](#running-the-analysis-jobs)
+  - [On GCP](#on-gcp)
+  - [Locally](#locally)
+- [Expected Output](#expected-output)
+- [Results](#results)
 
 ## Setup Instructions
 
@@ -66,31 +67,66 @@ project/
 The data used in this project consists of NYC taxi trip records for the year 2021, available in Parquet format.
 
 ## Running the Analysis Jobs
-### General Command
-Use the spark-submit script to run each analysis job. Make sure your GCP Spark cluster is properly configured and running.
+### On GCP
+Log in to your GCP account and open the Cloud Shell.
 
-### Example Commands
-Demand Prediction:
+Navigate to the project directory in Cloud Shell:
+
 ```bash
-./spark-submit src/jobs/demand_prediction.py
+cd sparkassignement
+```
+Submit the jobs to GCP Dataproc using the existing cluster and bucket:
+
+Trip Analysis:
+
+```bash
+gcloud dataproc jobs submit pyspark gs://azizsto1/src/jobs/trip_analysis.py --cluster=pyspark-dataproc --region=europe-west1 -- --input-path=gs://azizsto1/data/*.parquet --output-path=gs://azizsto1/output/trip_analysis
+```
+Tip Analysis:
+
+```bash
+gcloud dataproc jobs submit pyspark gs://azizsto1/src/jobs/tip_analysis.py --cluster=pyspark-dataproc --region=europe-west1 -- --input-path=gs://azizsto1/data/*.parquet --output-path-location=gs://azizsto1/output/tip_by_location --output-path-time=gs://azizsto1/output/tip_by_time
 ```
 Fare Analysis:
 ```bash
-./spark-submit src/jobs/fare_analysis.py
-```
-Tip Analysis:
-```bash
-./spark-submit src/jobs/tip_analysis.py
+gcloud dataproc jobs submit pyspark gs://azizsto1/src/jobs/fare_analysis.py --cluster=pyspark-dataproc --region=europe-west1 -- --input-path=gs://azizsto1/data/*.parquet --output-path=gs://azizsto1/output/avg_fare_amount
 ```
 Traffic Analysis:
 ```bash
-./spark-submit src/jobs/traffic_analysis.py
+gcloud dataproc jobs submit pyspark gs://azizsto1/src/jobs/traffic_analysis.py --cluster=pyspark-dataproc --region=europe-west1 -- --input-path=gs://azizsto1/data/*.parquet --output-path=gs://azizsto1/output/trip_count
+```
+Demand Prediction:
+```bash
+gcloud dataproc jobs submit pyspark gs://azizsto1/src/jobs/demand_predictions.py -
+```
+### Locally
+Ensure you have the required Python packages installed:
+```bash
+pip install -r requirements.txt
+```
+Run the analysis jobs locally:
+
+Demand Prediction:
+```bash
+spark-submit src/jobs/demand_prediction.py --input-path=data/yellow_tripdata_*.parquet --output-path=output/demand_prediction.csv
+```
+Fare Analysis:
+```bash
+
+spark-submit src/jobs/fare_analysis.py --input-path=data/yellow_tripdata_*.parquet --output-path=output/avg_fare_amount.csv
+```
+Tip Analysis:
+```bash
+spark-submit src/jobs/tip_analysis.py --input-path=data/yellow_tripdata_*.parquet --output-path-location=output/tip_by_location.csv --output-path-time=output/tip_by_time.csv
+```
+Traffic Analysis:
+```bash
+spark-submit src/jobs/traffic_analysis.py --input-path=data/yellow_tripdata_*.parquet --output-path=output/trip_count.csv
 ```
 Trip Analysis:
 ```bash
-./spark-submit src/jobs/trip_analysis.py
+spark-submit src/jobs/trip_analysis.py --input-path=data/yellow_tripdata_*.parquet --outp
 ```
-
 ## Expected Output
 
 The results of the analyses will be saved in the output/ directory. Each analysis script generates specific output files:
@@ -120,3 +156,33 @@ After running the jobs, you should find the following output files in the output
 - tip_by_time.csv: Tips categorized by time of day.
 
 - trip_count.csv: Number of trips per day.
+
+### Analysis of Average Trip Distance and Tip Percentage
+#### Average Duration and Distance of Rides
+1. Average Trip Distance by Time of Day, Day of Week, and Month of Year
+
+Analyzing the average trip distance based on different time dimensions can provide valuable insights into the travel patterns in NYC.
+
+Average Trip Distance by Hour of Day:
+The analysis reveals that there is a significant peak in the early morning hours around 5 AM, where the average trip distance spikes to over 800 units. This could be attributed to long-distance trips to airports or early morning commuters.
+
+Average Trip Distance by Day of Week:
+The data shows that trip distances are relatively consistent throughout the week with a noticeable peak on certain days. The peak observed on day 4 (Thursday) with distances reaching up to 800 units suggests a pattern of longer trips during mid-week.
+
+Average Trip Distance by Month of Year:
+The monthly analysis indicates that the average trip distance is fairly stable throughout the year, with a sharp increase around April. This spike may be due to specific events or holidays causing longer trips.
+
+These patterns suggest that while most trips are relatively short, certain times of day, specific days of the week, and particular months see significantly longer average trip distances. This information is useful for taxi companies to manage their fleet and anticipate high-demand periods.
+
+#### Tip Analysis
+2. Tip Percentage by Trip and Time
+
+Tip Percentage by Pickup Location:
+
+The data indicates a wide range of average tip percentages across different pickup locations. There are significant outliers with certain locations showing extremely high average tip percentages, reaching up to 2000%. These outliers could be due to data anomalies or specific high-tipping events at those locations. Most locations have a more modest average tip percentage, suggesting a varied tipping behavior depending on the pickup point.
+Tip Percentage by Time of Day, Day of Week, and Month of Year:
+
+Hour of Day: The average tip percentage shows a peak in the early morning hours, similar to the trip distance pattern, with tips reaching over 350%. This suggests that early morning travelers might tip more generously, possibly due to the nature of the trips being longer or airport-related.
+Day of Week: The tipping pattern shows some variability throughout the week, with a notable peak on day 5 (Friday), indicating higher tips towards the weekend. This could be due to increased leisure travel or end-of-week gratuity.
+Month of Year: There is considerable variability in tipping behavior throughout the year, with a significant spike in October. This peak could be associated with specific events or seasonal behaviors influencing tipping.
+These insights on tipping behavior help in understanding how time and location influence customer generosity, which can be leveraged for improving service strategies and driver performance metrics.
