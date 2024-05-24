@@ -165,12 +165,15 @@ Analyzing the average trip distance based on different time dimensions can provi
 
 Average Trip Distance by Hour of Day:
 The analysis reveals that there is a significant peak in the early morning hours around 5 AM, where the average trip distance spikes to over 800 units. This could be attributed to long-distance trips to airports or early morning commuters.
+![Average Trip Distance by Hour](avg_trip_distance_by_hour.png)
 
 Average Trip Distance by Day of Week:
 The data shows that trip distances are relatively consistent throughout the week with a noticeable peak on certain days. The peak observed on day 4 (Thursday) with distances reaching up to 800 units suggests a pattern of longer trips during mid-week.
+![Average Trip Distance by Day of Week](avg_trip_distance_by_day_of_week.png)
 
 Average Trip Distance by Month of Year:
 The monthly analysis indicates that the average trip distance is fairly stable throughout the year, with a sharp increase around April. This spike may be due to specific events or holidays causing longer trips.
+![Average Trip Distance by Month](avg_trip_distance_by_month.png)
 
 These patterns suggest that while most trips are relatively short, certain times of day, specific days of the week, and particular months see significantly longer average trip distances. This information is useful for taxi companies to manage their fleet and anticipate high-demand periods.
 
@@ -180,9 +183,14 @@ These patterns suggest that while most trips are relatively short, certain times
 Tip Percentage by Pickup Location:
 
 The data indicates a wide range of average tip percentages across different pickup locations. There are significant outliers with certain locations showing extremely high average tip percentages, reaching up to 2000%. These outliers could be due to data anomalies or specific high-tipping events at those locations. Most locations have a more modest average tip percentage, suggesting a varied tipping behavior depending on the pickup point.
+
+![Tip Percentage by Pickup Location](tip_percentage_by_location.png)
 Tip Percentage by Time of Day, Day of Week, and Month of Year:
 
 Hour of Day: The average tip percentage shows a peak in the early morning hours, similar to the trip distance pattern, with tips reaching over 350%. This suggests that early morning travelers might tip more generously, possibly due to the nature of the trips being longer or airport-related.
 Day of Week: The tipping pattern shows some variability throughout the week, with a notable peak on day 5 (Friday), indicating higher tips towards the weekend. This could be due to increased leisure travel or end-of-week gratuity.
 Month of Year: There is considerable variability in tipping behavior throughout the year, with a significant spike in October. This peak could be associated with specific events or seasonal behaviors influencing tipping.
 These insights on tipping behavior help in understanding how time and location influence customer generosity, which can be leveraged for improving service strategies and driver performance metrics.
+
+![Tip Percentage by Time](tip_percentage_by_time.png)
+
