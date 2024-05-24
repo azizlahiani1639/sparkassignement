@@ -205,5 +205,17 @@ The average fare amount does not vary drastically across the days of the week. H
 Average Fare by Month of Year
 The average fare amount shows a fairly consistent pattern across different months, with slight peaks in the summer months (July and August) and a decrease in the early months of the year. This could be due to increased tourism and travel activities during the summer.
 
-![Average Fare Analysis](avg_fare_combined)
+![Average Fare Analysis](avg_fare_combined.png)
 
+#### Demand Prediction
+Feature Engineering:
+
+We used the date and time of the pickups to create features for the model, such as the hour of the day, day of the week, and month of the year.
+
+Regression Model:
+A linear regression model was used to predict the number of pickups in the next hour based on these features.
+
+Results:
+The model's performance was visualized by plotting the predicted number of pickups over time.
+
+![Predicted Number of Pickups Over Time](path/to/image.png)
