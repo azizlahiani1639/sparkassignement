@@ -159,7 +159,7 @@ After running the jobs, you should find the following output files in the output
 
 ### Analysis of Average Trip Distance and Tip Percentage
 #### Average Duration and Distance of Rides
-1. Average Trip Distance by Time of Day, Day of Week, and Month of Year
+Average Trip Distance by Time of Day, Day of Week, and Month of Year
 
 Analyzing the average trip distance based on different time dimensions can provide valuable insights into the travel patterns in NYC.
 
@@ -178,7 +178,7 @@ The monthly analysis indicates that the average trip distance is fairly stable t
 These patterns suggest that while most trips are relatively short, certain times of day, specific days of the week, and particular months see significantly longer average trip distances. This information is useful for taxi companies to manage their fleet and anticipate high-demand periods.
 
 #### Tip Analysis
-2. Tip Percentage by Trip and Time
+Tip Percentage by Trip and Time
 
 Tip Percentage by Pickup Location:
 
@@ -190,7 +190,20 @@ Tip Percentage by Time of Day, Day of Week, and Month of Year:
 Hour of Day: The average tip percentage shows a peak in the early morning hours, similar to the trip distance pattern, with tips reaching over 350%. This suggests that early morning travelers might tip more generously, possibly due to the nature of the trips being longer or airport-related.
 Day of Week: The tipping pattern shows some variability throughout the week, with a notable peak on day 5 (Friday), indicating higher tips towards the weekend. This could be due to increased leisure travel or end-of-week gratuity.
 Month of Year: There is considerable variability in tipping behavior throughout the year, with a significant spike in October. This peak could be associated with specific events or seasonal behaviors influencing tipping.
-These insights on tipping behavior help in understanding how time and location influence customer generosity, which can be leveraged for improving service strategies and driver performance metrics.
 
 ![Tip Percentage by Time](tip_percentage_by_time.png)
+
+#### Fare Analysis
+The visualizations illustrate the average fare amount by hour of the day, day of the week, and month of the year.
+
+Average Fare by Hour of Day
+The average fare amount varies significantly by hour of the day. The peak fare amounts occur early in the morning around 4-6 AM, which could be attributed to early morning travelers, possibly airport trips, or lower traffic conditions leading to higher average fares. There is a noticeable drop in the average fare amount during midday and early afternoon hours, likely due to shorter, more frequent trips.
+
+Average Fare by Day of Week
+The average fare amount does not vary drastically across the days of the week. However, there's a slight increase in the average fare on Mondays and Tuesdays, and a slight decrease on weekends. This trend might suggest a higher number of business-related or longer trips during weekdays compared to the weekends.
+
+Average Fare by Month of Year
+The average fare amount shows a fairly consistent pattern across different months, with slight peaks in the summer months (July and August) and a decrease in the early months of the year. This could be due to increased tourism and travel activities during the summer.
+
+![Average Fare Analysis](avg_fare_combined)
 
